@@ -23,4 +23,3 @@ class User(UserMixin, db.Model):
 
   def check_password(self, clean_password):
     return check_password_hash(self.password, clean_password)
-

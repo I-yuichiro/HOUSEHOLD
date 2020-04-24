@@ -25,5 +25,7 @@ from app.views.auth import auth
 app.register_blueprint(auth)
 
 @app.route('/')
-def toppage():
-  return render_template('toppage.html')
+@login_required
+def index():
+  return render_template('index.html')
+
