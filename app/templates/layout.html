@@ -10,9 +10,14 @@
 
 <body>
 <ul>
-  <li><a href="{{ url_for('index')}}">Index</a></li>
-  <li><a href="{{ url_for('auth.signup')}}">新規登録</a></li>
-  <li><a href="{{ url_for('auth.login')}}">ログイン</a></li>
+  {% if current_user.is_authenticated %}
+      <li><a href="{{ url_for('auth.logout')}}">ログアウト</a></li>
+  {% endif %}
+
+  {% if not current_user.is_authenticated %}
+    <li><a href="{{ url_for('auth.signup')}}">新規登録</a></li>
+    <li><a href="{{ url_for('auth.login')}}">ログイン</a></li>
+  {% endif %}
 </ul>
 
 {% with messages = get_flashed_messages() %}

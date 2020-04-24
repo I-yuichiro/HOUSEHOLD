@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask_login import login_required
+
 from app.services import auth_service
 
 auth = Blueprint('auth', __name__)
@@ -26,3 +28,11 @@ def login():
       return render_template('auth.login')
     flash('ログインしました。')
     return redirect(url_for('index'))
+
+
+@auth.route('/logout')
+@login_required
+def logout():
+  auth_service.logout()
+  flash('ログアウトしました。')
+  return redirect(url_for('auth.login'))

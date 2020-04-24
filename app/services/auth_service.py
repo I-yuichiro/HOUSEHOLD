@@ -1,4 +1,4 @@
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from sqlalchemy.exc import SQLAlchemyError
 from app import db
 from app.models.user import User
@@ -34,3 +34,8 @@ def login(data: {}) -> User:
     return user
   except SQLAlchemyError:
     raise SQLAlchemyError
+
+
+def logout():
+  logout_user()
+  return True

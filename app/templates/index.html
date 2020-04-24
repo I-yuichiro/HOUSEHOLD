@@ -1,7 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <h1>
-    Index page
-  </h1>
+   <style>
+    table {
+    border-collapse: collapse;   /* 隣接するセルの罫線を重ねて表示する */
+    font-family: "メイリオ", sans-serif;/* フォントのスタイルを指定する */
+    color: #000000;      /* フォントの色を指定する */
+    width: 80%;  /* テーブルの横幅を指定する */
+    }
+    td, th {
+    border: 1px solid #000000;   /* 境界線を実線で指定する */
+    background-color: rgba(0,0,0,0.3);/* 背景色を指定する */
+    text-align: center;  /* インライン要素の位置を指定する */
+    padding: 3px;        /* 要素の余白を指定する(上下左右) */
+    }
+    th {
+    background-color: #31A9EE;   /* 見出しの背景色を指定する */
+    }
+    </style>
+ 
+  <table>
+  <thead><tr><th>項目</th><th>費用</th><th>割合</th></tr></thead>
+  <tbody>
+  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+  </tbody>
+  </table>
 {% endblock %}

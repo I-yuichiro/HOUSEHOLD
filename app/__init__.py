@@ -1,10 +1,10 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
+from flask_login import LoginManager, login_required
 
 app = Flask(__name__)
 
-app.secert_key = "super secret key"
+app.secret_key = "super secret key"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -25,5 +25,5 @@ from app.views.auth import auth
 app.register_blueprint(auth)
 
 @app.route('/')
-def index():
-  return render_template('index.html')
+def toppage():
+  return render_template('toppage.html')
