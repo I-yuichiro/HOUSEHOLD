@@ -1,15 +1,22 @@
-{% extends "layout.html" %}
-
+<!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>家計簿</title>
+</head>
+
   <body>
     <div>
-      <h3>Login</h3>
+      <h2>ログイン画面</h2>
       <form method="POST" action="/login">
         <div>
-          <input type="email" name='email' placeholder="Your Email" autofocus="">
+          <input type="email" name='email' placeholder="メールアドレス" autofocus="">
         </div>
         <div>
-          <input type="password" name='password' placeholder="Your Password">
+          <input type="password" name='password' placeholder="パスワード">
         </div>
         <div>
           <label>
@@ -17,7 +24,7 @@
             Remember me
           </label>
         </div>
-        <button>Login</button> 
+        <button>ログイン</button> 
       </form>
     </div>
   </body>

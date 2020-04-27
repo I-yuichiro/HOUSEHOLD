@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>家計簿</title>
+</head>
+
+<style>
+  table {
+  border-collapse: collapse;   /* 隣接するセルの罫線を重ねて表示する */
+  font-family: "メイリオ", sans-serif;/* フォントのスタイルを指定する */
+  width: 80%;  /* テーブルの横幅を指定する */
+  }
+  td, th {
+  border: 1px solid #000000;   /* 境界線を実線で指定する */
+  text-align: center;  /* インライン要素の位置を指定する */
+  padding: 3px;        /* 要素の余白を指定する(上下左右) */
+  }
+  
+  </style>
+
+<table>
+<tbody>
+<tr><td>項目</td><td>◯◯円</td></tr>
+</tbody>
+</table>
+<br>
+<div class="btn-group">
+  <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+    <button type="submit" class="btn-secondary">追加</button>
+  </form>
+  <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+    <button type="submit" class="btn-secondary">編集</button>
+  </form>
+  <div class="btn-group">
+    <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+      <button type="submit" class="btn-secondary">削除</button>
+    </form>
+</div>
+
+</html>
