@@ -29,14 +29,14 @@
 </table>
 <br>
 <div class="btn-group">
-  <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+  <form action="{{ url_for('index', id=entry.id)}}" methods="GET">
     <button type="submit" class="btn-secondary">追加</button>
   </form>
-  <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+  <form action="{{ url_for('index', id=entry.id)}}" methods="GET">
     <button type="submit" class="btn-secondary">編集</button>
   </form>
   <div class="btn-group">
-    <form action="{{ url_for('index', id=entry.id) }}" methods="GET">
+    <form action="{{ url_for('index', id=entry.id)}}" methods="GET">
       <button type="submit" class="btn-secondary">削除</button>
     </form>
 </div>

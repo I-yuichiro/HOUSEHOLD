@@ -25,14 +25,14 @@ def login():
     user = auth_service.login(request.form)
     if not user:
       flash('メールアドレスもしくはパスワードに誤りがあります。')
-      return render_template('auth/login.html')
+      return render_template('/auth/login.html')
     flash('ログインしました。')
     return render_template('index.html')
 
 
 @auth.route('/index')
 def add():
-  return render_template('auth/add.html')
+  return render_template('/auth/add.html')
 
 
 @auth.route('/logout')
@@ -40,4 +40,4 @@ def add():
 def logout():
   auth_service.logout()
   flash('ログアウトしました。')
-  return redirect(url_for('auth.login'))
+  return redirect(url_for('/auth/login.html'))
