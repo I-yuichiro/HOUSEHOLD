@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, session
 from flask_login import login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.services import auth_service
@@ -30,7 +30,7 @@ def login():
     return render_template('index.html')
 
 
-@auth.route('/index')
+@auth.route('/index.html')
 def add():
   return render_template('/auth/add.html')
 
