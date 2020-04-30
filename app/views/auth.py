@@ -20,7 +20,7 @@ def signup():
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
   if request.method == 'GET':
-    return render_template('auth/login.html')
+    return render_template('/auth/login.html')
   else:
     user = auth_service.login(request.form)
     if not user:
@@ -30,7 +30,7 @@ def login():
     return render_template('index.html')
 
 
-@auth.route('/index.html')
+@auth.route('/index')
 def add():
   return render_template('/auth/add.html')
 
@@ -40,4 +40,4 @@ def add():
 def logout():
   auth_service.logout()
   flash('ログアウトしました。')
-  return redirect(url_for('/auth/login.html'))
+  return redirect(url_for('login'))

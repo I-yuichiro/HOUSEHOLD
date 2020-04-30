@@ -1,5 +1,5 @@
 from flask import request, redirect, url_for, render_template, flash, session
-from app import app
+from HOUSEHOLD import app
 from app import db
 from app.models.entries import Entry
 
