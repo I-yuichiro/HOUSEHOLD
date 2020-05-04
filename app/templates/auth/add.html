@@ -19,25 +19,24 @@
   text-align: center;  /* インライン要素の位置を指定する */
   padding: 3px;        /* 要素の余白を指定する(上下左右) */
   }
-  
-  </style>
+</style>
 
-<table>
-<tbody>
-<tr><td>項目</td><td>◯◯円</td></tr>
-</tbody>
-</table>
-<br>
-<div class="btn-group">
-  <form action="{{ url_for('auth.add')}}" methods="GET">
-    <button type="submit" class="btn-secondary">追加</button>
-  </form>
-  <form action="{{ url_for('auth.add')}}" methods="GET">
-    <button type="submit" class="btn-secondary">編集</button>
-  </form>
-    <form action="{{ url_for('auth.add')}}" methods="GET">
-      <button type="submit" class="btn-secondary">削除</button>
-    </form>
-</div>
+<body>
+  <h1>追加項目</h1>
+  <table>
+    <div class="btn-group">
+      <form method="POST" action="/index">
+        <tr>
+         <th><input type="text" class="form-control" id="InputTitle" name=username></th>
+         <th><button type="submit" class="btn-secondary">項目追加</button></th>
+        </tr>
+        <tr>
+         <td><input type="text" class="form-control" id="InputTitle" name=username></td>
+         <td><button type="submit" class="btn-secondary">費用追加</button></td>
+        </tr>
+      </form>
+    </div>
+  </table>
+</body>
 
 </html>

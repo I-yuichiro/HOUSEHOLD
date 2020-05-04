@@ -8,10 +8,6 @@
     <title>家計簿</title>
   </head>
 
-  {% if current_user.is_authenticated %}
-    <a href="{{ url_for('auth.logout')}}">ログアウト</a>
-  {% endif %}
-  <br>
   <style>
     table {
     border-collapse: collapse;   /* 隣接するセルの罫線を重ねて表示する */
@@ -29,15 +25,24 @@
     background-color: #31A9EE;   /* 見出しの背景色を指定する */
     }
     </style>
- 
+
+
+ <body>
+  <h1>家計簿表</h1>
   <table>
-  <thead><tr><th>項目</th><th>費用</th><th>割合</th></tr></thead>
-  <tbody>
-  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
-  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
-  <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
-  </tbody>
-  </table>
-  <br>  
-  <a href="{{ url_for('auth.add')}}">追加項目</a>
+    <thead><tr><th>項目</th><th>費用</th><th>割合</th></tr></thead>
+    <tbody>
+    <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+    <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+    </tbody>
+    </table>
+    <br>  
+    <a href="{{ url_for('auth.add')}}">追加項目</a>
+    <br>
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('auth.logout')}}">ログアウト</a>
+    {% endif %}
+
+</body>
+  
 </html>

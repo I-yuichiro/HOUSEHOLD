@@ -28,10 +28,14 @@ def login():
       flash('メールアドレスもしくはパスワードに誤りがあります。')
       return render_template('/auth/login.html')
     flash('ログインしました。')
-    return render_template('index.html')
+    return redirect('/index')
+
+@auth.route('/index', methods=['GET', 'POST'])
+def index():
+  return render_template('/index.html')
 
 
-@auth.route('/index')
+@auth.route('/add')
 def add():
   return render_template('/auth/add.html')
 
@@ -41,4 +45,4 @@ def add():
 def logout():
   auth_service.logout()
   flash('ログアウトしました。')
-  return redirect(url_for('login'))
+  return redirect(url_for('auth.login'))
