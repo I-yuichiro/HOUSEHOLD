@@ -32,16 +32,15 @@
   <table>
     <thead><tr><th>項目</th><th>費用</th><th>割合</th></tr></thead>
     <tbody>
-    <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
+    <tr><td>{{entry.categroies}}</td><td>{{entry.cost}}円</td><td>◯◯％</td></tr>
     <tr><td>項目</td><td>◯◯円</td><td>◯◯％</td></tr>
     </tbody>
     </table>
     <br>  
     <a href="{{ url_for('auth.add')}}">追加項目</a>
     <br>
-    {% if current_user.is_authenticated %}
-      <a href="{{ url_for('auth.logout')}}">ログアウト</a>
-    {% endif %}
+    <a href="{{ url_for('auth.logout')}}">ログアウト</a>
+
 
 </body>
   
