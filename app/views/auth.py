@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash,
 from flask_login import login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.services import auth_service
+from app import db
+from app.models.entries import Entry
 
 
 auth = Blueprint('auth', __name__)
@@ -30,9 +32,11 @@ def login():
     flash('ログインしました。')
     return redirect('/index')
 
-@auth.route('/index', methods=['GET', 'POST'])
+@auth.route('/index', methods=['GET','POST'])
 def index():
-  return render_template('/index.html')
+  if not session.get('logged_in'):
+    entries = Entry.query.order_by(Entry.id.desc()).all()
+  return render_template('/index.html', entries=entries) 
 
 
 @auth.route('/add')
