@@ -10,4 +10,4 @@ class Entry(db.Model):
     self.cost = cost
 
   def __repr__(self):
-    return '<Entry id:{} categories:{} cost:{}>'.format(self.cost, self.categories)
+    return '<Entry all:{} categories:{} cost:{}>'.format(self.cost, self.categories)

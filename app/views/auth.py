@@ -35,7 +35,7 @@ def login():
 @auth.route('/index', methods=['GET','POST'])
 def index():
   if not session.get('logged_in'):
-    entries = Entry.query.order_by(Entry.id.desc()).all()
+    entries = Entry.query.all()
   return render_template('/index.html', entries=entries) 
 
 
