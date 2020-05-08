@@ -32,6 +32,7 @@ def login():
     flash('ログインしました。')
     return redirect('/index')
 
+
 @auth.route('/index', methods=['GET','POST'])
 def index():
   if not session.get('logged_in'):

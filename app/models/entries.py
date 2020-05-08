@@ -8,6 +8,7 @@ class Entry(db.Model):
   def __init__(self, categories=None, cost=None):
     self.categories = categories
     self.cost = cost
+    self.all = all
 
   def __repr__(self):
-    return '<Entry all:{} categories:{} cost:{}>'.format(self.cost, self.categories)
+    return '<Entry all:{}>'.format(self.all)
