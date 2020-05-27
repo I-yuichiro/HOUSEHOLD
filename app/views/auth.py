@@ -30,14 +30,18 @@ def login():
       flash('メールアドレスもしくはパスワードに誤りがあります。')
       return render_template('/auth/login.html')
     flash('ログインしました。')
+    session['logged_in'] = True
     return redirect('/index')
 
 
 @auth.route('/index', methods=['GET','POST'])
 def index():
   if not session.get('logged_in'):
+    return redirect('/auth/login.html')
+  else:
     entries = Entry.query.all()
-  return render_template('/index.html', entries=entries) 
+    print()
+  return render_template('/index.html',entries=entries) 
 
 
 @auth.route('/add')
