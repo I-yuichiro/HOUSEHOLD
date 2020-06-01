@@ -25,7 +25,7 @@
   <h1>追加項目</h1>
   <table>
     <div class="btn-group">
-      <form method="POST" action="/index">
+      <form action="{{ url_for('auth.index')}}" method=post class=add_entry>
         <tr>
          <th><input type="text" class="form-control" id="InputTitle" name=username></th>
          <th><button type="submit" class="btn-secondary">項目追加</button></th>

@@ -8,6 +8,7 @@ from app.models.entries import Entry
 
 auth = Blueprint('auth', __name__)
 
+# signupページと、postするページを共通化
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
   if request.method == 'GET':
@@ -18,7 +19,7 @@ def signup():
       flash('メールアドレスはすでに登録されています。')
       return redirect(url_for('layout'))
     flash('新規登録に成功しました。')
-    return redirect(url_for('index.html'))
+    return redirect(url_for('auth.index'))
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -33,25 +34,36 @@ def login():
     session['logged_in'] = True
     return redirect('/index')
 
-
-@auth.route('/index', methods=['GET','POST'])
-def index():
-  if not session.get('logged_in'):
-    return redirect('/auth/login.html')
-  else:
-    entries = Entry.query.all()
-    print()
-  return render_template('/index.html',entries=entries) 
-
-
-@auth.route('/add')
-def add():
-  return render_template('/auth/add.html')
-
-
 @auth.route('/logout')
 @login_required
 def logout():
   auth_service.logout()
   flash('ログアウトしました。')
   return redirect(url_for('auth.login'))
+
+#?
+@auth.route('/index', methods=['GET','POST'])
+def index():
+  if not session.get('logged_in'):
+    return redirect('/auth/login.html')
+  else:
+    entries = Entry.query.all()
+  return render_template('/index.html',entries=entries) 
+
+#?
+@auth.route('/add')
+def add():
+  return render_template('/auth/add.html')
+
+@auth.route('/add', methods=['GET', 'POST'])
+def add_entry():
+  if not session.get('logged_in'):
+    return redirect(url_for('index'))
+  entries = Entry(
+    categories = request.form['categories'],
+    cost = request.form['cost']
+  )
+  print(request.form['categories'])
+  db.session.add(entries)
+  db.session.commit()
+  return redirect(url_for('index'))
