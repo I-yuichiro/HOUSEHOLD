@@ -12,37 +12,51 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>家計簿</title>
+  <title>家計簿円グラフ</title>
 </head>
 
 <style>
-  h1 {
-     border: 3px solid #000000;
-     color: #0000FF;
-     background-color: #fee;
-     padding: 5px;
+    h1 {
+      color: #0000FF
     }
-
-   body {
+    body {
      text-align: center;
      margin: 0 auto;
      padding: 5px;
-     width: 300px;
-     height: 150px;
-     margin-top: 30px;
+     width: 100%;
     }
 </style>
 
 <body>
-    <h1>家計簿アプリ</h1>
+    <h1>家計簿円グラフ</h1>
     <br>
-    {% for messages in get_flashed_messages() %}
-    <div class="alert alert-info" role="alert">
-    {{ messages }}
-    </div>
-    {% endfor %}
-    <a href="{{ url_for('auth.signup')}}">新規登録</a>
-    <a href="{{ url_for('auth.login')}}">ログイン</a>
-</body>
+    <canvas id="myPieChart"></canvas>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 
+   <script>
+     var ctx = document.getElementById("myPieChart");
+     var lbs = {{g|tojson}};
+     var dt = {{d|tojson}};
+     var col = {{c|tojson}};
+     
+     var myPieChart = new Chart(ctx, {
+       type: 'pie',
+       data: {
+       labels: lbs,
+       datasets: [{
+         backgroundColor:col,
+         data: dt
+       }]
+       },
+       options: {
+       title: {
+         display: true,
+         text: '家計簿割合表'
+       }
+       }
+     });
+   </script>
+   <br>
+   <a href="{{ url_for('auth.index')}}">表に戻る</a>
+</body>
 </html>

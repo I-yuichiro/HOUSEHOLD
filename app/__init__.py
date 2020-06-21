@@ -1,6 +1,5 @@
 #モジュールインポート
-from flask import Flask, render_template
-# データベースを利用するために追加
+from flask import Flask, render_template, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_required
 from werkzeug.security import generate_password_hash, check_password_hash

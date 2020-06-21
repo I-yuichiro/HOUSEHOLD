@@ -12,67 +12,50 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>家計簿表</title>
+  <title>追加項目</title>
 </head>
 
 <style>
    h1 {
-     color: #0000FF
+     color: #0000FF;
+     padding: 5px;
      }
    body {
      text-align: center;
      margin: 0 auto;
-     padding: 5px;
-     width: 100%;
+     width: 300px;
+     height: 250px;
     }
    table {
      border-collapse: collapse;
      font-family: "メイリオ", sans-serif;
-     color: #000000;
      width: 100%;
-    }
-   td, th {
+     }
+   tr, th {
      border: 1px solid #000000;
-     background-color: rgba(0,0,0,0.3);
-     padding: 5px;
-    }
-    th {
-    background-color: #31A9EE;
+     text-align: center;
+     padding: 3px;
     }
 </style>
 
 <body>
-    <h1>家計簿表</h1>
-    <br>
-      {% for messages in get_flashed_messages() %}
-        <div class="alert alert-info" role="alert">
-          {{ messages }}
+    <form method="POST" action="/index">
+      <h1>追加項目</h1>
+      <table>
+        <div class="btn-group">
+          <tr>
+            <th>項目</th>
+            <th><input type="text" class="form-control" id="InputTitle" name=title></th>
+          </tr>
+          <tr>
+            <th>費用</th>
+            <th><input type="text" class="form-control" id="InputTitle" name=cost></th>
+          </tr>
         </div>
-      {% endfor %}
-    <table>
-      <thead><tr><th>項目</th><th>費用</th><th>割合</th><th></th><th></th></tr></thead>
-        {% for entry in entries %}
-        <tr>
-          <td>{{entry.categroies}}</td><td>{{entry.cost}}円</td><td>{{entry.per}}％</td>
-          <td>
-            <a href="{{ url_for('auth.edit_entry', id=entry.id) }}">
-              <button type="button" type="submit" method="POST">編集</button>
-           </a>
-          </td>
-          <td>
-            <a href="{{ url_for('auth.delete_entry',id=entry.id) }}">
-              <button type="button"type="submit" method="POST">削除</button>
-            </a>
-          </td>
-         </tr>
-         {% endfor %}
-     </table>
-    <br>  
-    <a href="{{ url_for('auth.add')}}">追加項目</a>
-    <br>
-    <a href="{{ url_for('auth.pie')}}">円グラフ表示</a>
-    <br>
-    <a href="{{ url_for('auth.logout')}}">ログアウト</a>
+      </table>
+      <br>
+      <button type="submit" class="btn-secondary">追加</button>
+    </form>
 </body>
 
 </html>
